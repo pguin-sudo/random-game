@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://diohw80dimm6u"]
+
+[ext_resource type="FontFile" uid="uid://p3tkfrjpapm8" path="res://resources/Fonts/FontsFiles/Lack-Regular.otf" id="1_akfuc"]
+
+[resource]
+default_font = ExtResource("1_akfuc")

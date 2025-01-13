@@ -1,16 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://3qvv3k3fobkd"]
 
-[ext_resource type="Texture2D" uid="uid://bg8kfqdjqofd7" path="res://resources/PlaceHolder.png" id="1_nchmp"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt000"]
 radius = 144.031
 
-[node name="baseenemy" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7uu58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nchmp")
+[node name="baseenemy" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xt000")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 4)
+scale = Vector2(2.44531, 3.90625)
+sprite_frames = SubResource("SpriteFrames_7uu58")

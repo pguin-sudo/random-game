@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bf0qeu5c018xn"]
+[gd_scene load_steps=2 format=3 uid="uid://bf0qeu5c018xn"]
+
+[ext_resource type="Theme" uid="uid://diohw80dimm6u" path="res://resources/Fonts/GodotFont/LackBase.tres" id="1_jxr5g"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_jxr5g")
+text = "TEXT LACK to all"
