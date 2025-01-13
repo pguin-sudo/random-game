@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://3qvv3k3fobkd"]
+[gd_scene load_steps=5 format=3 uid="uid://3qvv3k3fobkd"]
+
+[ext_resource type="Script" path="res://scenes/Enemy/baseenemy.gd" id="1_4u2rd"]
+[ext_resource type="Texture2D" uid="uid://cq6gm2yhexakn" path="res://resources/Graph/PlaceHolder.png" id="2_114ut"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt000"]
 radius = 144.031
@@ -14,7 +17,8 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="baseenemy" type="Node2D"]
+[node name="baseenemy" type="CharacterBody2D"]
+script = ExtResource("1_4u2rd")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -25,3 +29,9 @@ shape = SubResource("CircleShape2D_xt000")
 position = Vector2(11, 4)
 scale = Vector2(2.44531, 3.90625)
 sprite_frames = SubResource("SpriteFrames_7uu58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_114ut")
