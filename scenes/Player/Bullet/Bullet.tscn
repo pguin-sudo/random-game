@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkusj757cc0ur"]
+
+[ext_resource type="Script" path="res://scenes/Player/Bullet/bullet.gd" id="1_76knq"]
+[ext_resource type="Texture2D" uid="uid://dpekdos51luc4" path="res://resources/Graph/Characters/Other/Fireball.png" id="1_rij5g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27fwp"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_76knq")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(5, 5)
+texture = ExtResource("1_rij5g")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_27fwp")
