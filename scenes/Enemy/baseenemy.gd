@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed = 100
 @export var distance = 300.0
 
+@onready var damage = 10
+@onready var hp = 10
 @onready var anim = $AnimatedSprite2D
 var animation_to_play = "Enemy1" 
 
@@ -29,15 +31,31 @@ func _process(_delta):
 				anim.play(animation_to_play)
 			else: 
 				pass
-				# anim.play(animation_to_play)
+				
+				# anim.play(Idle)
 				
 		else: velocity = Vector2.ZERO
 	move_and_slide() 
 
 
+
 func Damaged():
 	match type:
-		"Fire": return 15
-		"Water": return 5
-		"Air": return 5
-		"Earth": return 5
+		"Fire": hp -= 15
+		"Water": hp -=  5
+		"Air": hp -=  5
+		"Earth": hp -= 5
+	if hp <= 0: 
+		Globaldata.enemydied()
+		Globaldata.emit_signal("enemydie")
+		queue_free()
+
+
+func _on_damage_area_entered(area):
+	print("recieved 0")
+	pass
+
+
+func _on_recieve_area_entered(area):
+	Damaged()
+	print("recieved 1")

@@ -5,13 +5,17 @@ var face_direction = ""
 var animation_to_play = "Wind"
 var currenttype = "Wind"
 var bulletpath = preload("res://scenes/Player/Bullet/Bullet.tscn")
+
 @export var speed = 500
+
 @onready var anim = $AnimatedSprite2D
+@onready var cam = $Camera2D
 
 func _ready():
+	randomize()
 	anim.stop()
 	anim.play(animation_to_play)
-	
+	Globaldata.enemydie.connect(killedenemy)
 
 func _physics_process(_delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -20,14 +24,14 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	if input_direction.length() > 0: 
-		if abs(input_direction.x) > abs(input_direction.y): # Horizontal or vertical? (prioritizing vertical movement)
+		if abs(input_direction.x) > abs(input_direction.y): 	
 			face_direction = "Left" if input_direction.x < 0 else "Right"
 		else:
 			face_direction = "Down" if input_direction.y > 0 else "Up"
 	
-	# All movement animations named appropriately, eg "Left_Idle" or "Back_Walk"
 	if velocity.length() <= 0.0: 
-		anim.play(animation_to_play)
+		#for idle anim using currenttype
+		anim.play(currenttype)
 	else:
 		animation_to_play = currenttype + "Walk" + face_direction
 		anim.play(animation_to_play)
@@ -55,3 +59,7 @@ func shoot():
 	$ShootCooldown.start()
 	# print("done")
 	
+
+func killedenemy():
+	cam.timer.start()
+	$Camera2D/score.text = str(Globaldata.score)

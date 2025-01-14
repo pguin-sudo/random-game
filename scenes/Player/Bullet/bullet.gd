@@ -22,3 +22,5 @@ func _physics_process(_delta):
 	velocity = Vector2(speed, 0).rotated(dir)
 	move_and_slide()
 	
+func _on_area_2d_area_entered(area):
+	queue_free()

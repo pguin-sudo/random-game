@@ -238,18 +238,29 @@ animations = [{
 script = ExtResource("1_4u2rd")
 distance = 100.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="damage" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="recieve" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="recieve"]
 shape = SubResource("CircleShape2D_xt000")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.999998, 1)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_7uu58")
-animation = &"Enemy1WalkUp"
-frame_progress = 0.379283
+animation = &"Enemy1WalkDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.685, 0.685)
 shape = SubResource("CircleShape2D_xt000")
+
+[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
+[connection signal="area_entered" from="recieve" to="." method="_on_recieve_area_entered"]

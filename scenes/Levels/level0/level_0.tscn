@@ -7,7 +7,7 @@
 [node name="Level0" type="Node2D"]
 
 [node name="baseenemy" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(740, 249)
+position = Vector2(620, 407)
 
 [node name="Player" parent="." instance=ExtResource("2_oe1lf")]
 position = Vector2(113, 263)
@@ -17,8 +17,58 @@ position = Vector2(113, 263)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment"]
 stream = ExtResource("3_xceeo")
 autoplay = true
-stream_paused = true
 max_polyphony = 2
 bus = &"Music"
 playback_type = 1
 parameters/looping = true
+
+[node name="baseenemy2" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1089, 535)
+
+[node name="baseenemy3" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(850, 50)
+
+[node name="baseenemy4" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(949, 198)
+
+[node name="baseenemy5" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(814, 562)
+
+[node name="baseenemy6" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(594, -1)
+
+[node name="baseenemy7" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1196, 170)
+
+[node name="baseenemy8" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1665, 298)
+
+[node name="baseenemy9" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1426, -187)
+
+[node name="baseenemy10" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1525, -39)
+
+[node name="baseenemy11" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1390, 325)
+
+[node name="baseenemy13" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1334, 985)
+
+[node name="baseenemy14" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1803, 1113)
+
+[node name="baseenemy15" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1564, 628)
+
+[node name="baseenemy16" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1663, 776)
+
+[node name="baseenemy17" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1528, 1140)
+
+[node name="baseenemy18" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1308, 577)
+
+[node name="baseenemy12" parent="." instance=ExtResource("1_yf27a")]
+position = Vector2(1170, -238)
