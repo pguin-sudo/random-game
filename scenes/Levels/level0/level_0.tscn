@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg0xpme25r7vk"]
+[gd_scene load_steps=4 format=3 uid="uid://dg0xpme25r7vk"]
 
 [ext_resource type="PackedScene" uid="uid://3qvv3k3fobkd" path="res://scenes/Enemy/baseenemy.tscn" id="1_yf27a"]
 [ext_resource type="PackedScene" uid="uid://ok1b26if5hmj" path="res://scenes/Player/player.tscn" id="2_oe1lf"]
+[ext_resource type="AudioStream" uid="uid://xightji463h4" path="res://resources/Audio/Music/1.mp3" id="3_xceeo"]
 
 [node name="Level0" type="Node2D"]
 
@@ -10,3 +11,14 @@ position = Vector2(740, 249)
 
 [node name="Player" parent="." instance=ExtResource("2_oe1lf")]
 position = Vector2(113, 263)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment"]
+stream = ExtResource("3_xceeo")
+autoplay = true
+stream_paused = true
+max_polyphony = 2
+bus = &"Music"
+playback_type = 1
+parameters/looping = true
