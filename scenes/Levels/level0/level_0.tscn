@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg0xpme25r7vk"]
+[gd_scene load_steps=5 format=3 uid="uid://dg0xpme25r7vk"]
 
 [ext_resource type="PackedScene" uid="uid://3qvv3k3fobkd" path="res://scenes/Enemy/baseenemy.tscn" id="1_yf27a"]
 [ext_resource type="PackedScene" uid="uid://ok1b26if5hmj" path="res://scenes/Player/player.tscn" id="2_oe1lf"]
 [ext_resource type="AudioStream" uid="uid://xightji463h4" path="res://resources/Audio/Music/1.mp3" id="3_xceeo"]
+
+[sub_resource type="Environment" id="Environment_r3esj"]
+background_mode = 3
+glow_enabled = true
 
 [node name="Level0" type="Node2D"]
 
@@ -11,6 +15,59 @@ position = Vector2(620, 407)
 
 [node name="Player" parent="." instance=ExtResource("2_oe1lf")]
 position = Vector2(113, 263)
+
+[node name="NodeForTestingDeleteLaterDONTEXPAND" type="Node2D" parent="."]
+
+[node name="baseenemy2" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1089, 535)
+
+[node name="baseenemy3" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(850, 50)
+
+[node name="baseenemy4" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(949, 198)
+
+[node name="baseenemy5" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(814, 562)
+
+[node name="baseenemy6" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(594, -1)
+
+[node name="baseenemy7" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1196, 170)
+
+[node name="baseenemy8" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1665, 298)
+
+[node name="baseenemy9" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1426, -187)
+
+[node name="baseenemy10" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1525, -39)
+
+[node name="baseenemy11" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1390, 325)
+
+[node name="baseenemy13" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1334, 985)
+
+[node name="baseenemy14" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1803, 1113)
+
+[node name="baseenemy15" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1564, 628)
+
+[node name="baseenemy16" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1663, 776)
+
+[node name="baseenemy17" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1528, 1140)
+
+[node name="baseenemy18" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1308, 577)
+
+[node name="baseenemy12" parent="NodeForTestingDeleteLaterDONTEXPAND" instance=ExtResource("1_yf27a")]
+position = Vector2(1170, -238)
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -22,53 +79,5 @@ bus = &"Music"
 playback_type = 1
 parameters/looping = true
 
-[node name="baseenemy2" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1089, 535)
-
-[node name="baseenemy3" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(850, 50)
-
-[node name="baseenemy4" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(949, 198)
-
-[node name="baseenemy5" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(814, 562)
-
-[node name="baseenemy6" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(594, -1)
-
-[node name="baseenemy7" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1196, 170)
-
-[node name="baseenemy8" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1665, 298)
-
-[node name="baseenemy9" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1426, -187)
-
-[node name="baseenemy10" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1525, -39)
-
-[node name="baseenemy11" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1390, 325)
-
-[node name="baseenemy13" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1334, 985)
-
-[node name="baseenemy14" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1803, 1113)
-
-[node name="baseenemy15" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1564, 628)
-
-[node name="baseenemy16" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1663, 776)
-
-[node name="baseenemy17" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1528, 1140)
-
-[node name="baseenemy18" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1308, 577)
-
-[node name="baseenemy12" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(1170, -238)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_r3esj")
