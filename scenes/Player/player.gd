@@ -10,11 +10,10 @@ var bulletpath = preload("res://scenes/Player/Bullet/Bullet.tscn")
 
 func _ready():
 	anim.stop()
-	anim.play("Wind")
-	
+	anim.play(animation_to_play)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 	velocity.normalized()
@@ -28,7 +27,7 @@ func _physics_process(delta):
 	
 	# All movement animations named appropriately, eg "Left_Idle" or "Back_Walk"
 	if velocity.length() <= 0.0: 
-		anim.play("Wind")
+		anim.play(animation_to_play)
 	else:
 		animation_to_play = currenttype + "Walk" + face_direction
 		anim.play(animation_to_play)
@@ -40,7 +39,6 @@ func _physics_process(delta):
 		if $ShootCooldown.is_stopped(): shoot()
 		return
 	$PointNode/Point/Particles.emitting = false
-	
 
 
 func send_data():
@@ -55,5 +53,5 @@ func shoot():
 	bullet.rota = $PointNode.global_rotation
 	get_parent().add_child(bullet)
 	$ShootCooldown.start()
-	print("done")
+	# print("done")
 	
