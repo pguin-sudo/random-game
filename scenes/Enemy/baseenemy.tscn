@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://3qvv3k3fobkd"]
+[gd_scene load_steps=39 format=3 uid="uid://3qvv3k3fobkd"]
 
 [ext_resource type="Script" path="res://scenes/Enemy/baseenemy.gd" id="1_4u2rd"]
 [ext_resource type="Texture2D" uid="uid://bnyw82uuw3eio" path="res://resources/Graph/Characters/Enemies/1/U_Idle.png" id="2_78di2"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dv6w4xefj0gdu" path="res://resources/Graph/Characters/Enemies/1/S_Walk.png" id="4_npqjx"]
 [ext_resource type="Texture2D" uid="uid://7hnnt6sm3h3b" path="res://resources/Graph/Characters/Enemies/1/S_Walk_Inv.png" id="5_s3j2i"]
 [ext_resource type="Texture2D" uid="uid://k16g80817ind" path="res://resources/Graph/Characters/Enemies/1/U_Walk.png" id="6_waxs8"]
+
+[sub_resource type="Gradient" id="Gradient_4evyo"]
+offsets = PackedFloat32Array(0, 0.439306, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.947977, 0.947977, 0.947977, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_0ghmq"]
+offsets = PackedFloat32Array(0, 0.50289, 1)
+colors = PackedColorArray(0.24, 0.0048, 0.0048, 1, 0.3, 0.00599999, 0.00599999, 1, 0.56, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt000"]
 radius = 78.0577
@@ -237,6 +245,31 @@ animations = [{
 [node name="baseenemy" type="CharacterBody2D"]
 script = ExtResource("1_4u2rd")
 distance = 100.0
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+z_index = -5
+z_as_relative = false
+emitting = false
+amount = 230
+lifetime = 5.0
+explosiveness = 1.0
+randomness = 0.28
+emission_shape = 1
+emission_sphere_radius = 32.68
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 36.36
+initial_velocity_max = 246.5
+damping_min = 370.835
+damping_max = 370.835
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.0
+scale_amount_max = 14.31
+color_ramp = SubResource("Gradient_4evyo")
+color_initial_ramp = SubResource("Gradient_0ghmq")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
 [node name="damage" type="Area2D" parent="."]
 collision_layer = 0

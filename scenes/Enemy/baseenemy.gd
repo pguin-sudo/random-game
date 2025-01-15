@@ -48,6 +48,14 @@ func Damaged():
 	if hp <= 0: 
 		Globaldata.enemydied()
 		Globaldata.emit_signal("enemydie")
+		
+		$AnimatedSprite2D.visible = false
+		$recieve.queue_free()
+		$damage.queue_free()
+		$CollisionShape2D.queue_free()
+		$DeathParticles.emitting = true
+		
+		await get_tree().create_timer(5.0).timeout
 		queue_free()
 
 

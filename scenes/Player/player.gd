@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var face_direction = ""
+var face_direction = "Down"
 var animation_to_play = "Wind"
 var currenttype = "Wind"
 var bulletpath = preload("res://scenes/Player/Bullet/Bullet.tscn")
