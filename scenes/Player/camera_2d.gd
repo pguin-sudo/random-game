@@ -1,14 +1,9 @@
 extends Camera2D
 
 @onready var timer = $shakingtime
-@export var shake = 25
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var shake = 10
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta: float):
 	if not timer.is_stopped():
 		shakescreen()
 		return

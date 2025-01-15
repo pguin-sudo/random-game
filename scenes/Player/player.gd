@@ -62,4 +62,4 @@ func shoot():
 
 func killedenemy():
 	cam.timer.start()
-	$Camera2D/score.text = str(Globaldata.score)
+	$Canvas/Score.text = str(Globaldata.score)
