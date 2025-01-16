@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://3qvv3k3fobkd"]
+[gd_scene load_steps=41 format=3 uid="uid://3qvv3k3fobkd"]
 
 [ext_resource type="Script" path="res://scenes/Enemy/baseenemy.gd" id="1_4u2rd"]
 [ext_resource type="Texture2D" uid="uid://bnyw82uuw3eio" path="res://resources/Graph/Characters/Enemies/1/U_Idle.png" id="2_78di2"]
@@ -6,14 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dv6w4xefj0gdu" path="res://resources/Graph/Characters/Enemies/1/S_Walk.png" id="4_npqjx"]
 [ext_resource type="Texture2D" uid="uid://7hnnt6sm3h3b" path="res://resources/Graph/Characters/Enemies/1/S_Walk_Inv.png" id="5_s3j2i"]
 [ext_resource type="Texture2D" uid="uid://k16g80817ind" path="res://resources/Graph/Characters/Enemies/1/U_Walk.png" id="6_waxs8"]
-
-[sub_resource type="Gradient" id="Gradient_4evyo"]
-offsets = PackedFloat32Array(0, 0.439306, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.947977, 0.947977, 0.947977, 1, 0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_0ghmq"]
-offsets = PackedFloat32Array(0, 0.50289, 1)
-colors = PackedColorArray(0.24, 0.0048, 0.0048, 1, 0.3, 0.00599999, 0.00599999, 1, 0.56, 0, 0, 1)
+[ext_resource type="AudioStream" uid="uid://d1ar6evlujphm" path="res://resources/Audio/SFX/Enemies/death.wav" id="7_kbtbo"]
+[ext_resource type="AudioStream" uid="uid://43xyiilcf0af" path="res://resources/Audio/SFX/Enemies/damage.wav" id="7_ppl5q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt000"]
 radius = 78.0577
@@ -242,16 +236,48 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="baseenemy" type="CharacterBody2D"]
+[sub_resource type="Gradient" id="Gradient_4evyo"]
+offsets = PackedFloat32Array(0, 0.439306, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.947977, 0.947977, 0.947977, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_0ghmq"]
+offsets = PackedFloat32Array(0, 0.50289, 1)
+colors = PackedColorArray(0.24, 0.0048, 0.0048, 1, 0.3, 0.00599999, 0.00599999, 1, 0.56, 0, 0, 1)
+
+[node name="BaseEnemy" type="CharacterBody2D"]
 script = ExtResource("1_4u2rd")
 distance = 100.0
 
-[node name="DeathParticles" type="CPUParticles2D" parent="."]
+[node name="Damage" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="Recieve" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Recieve"]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.999998, 1)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_7uu58")
+animation = &"Enemy1WalkDown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.685, 0.685)
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="DamageParticles" type="CPUParticles2D" parent="."]
 z_index = -5
 z_as_relative = false
 emitting = false
-amount = 230
-lifetime = 5.0
+amount = 128
+one_shot = true
 explosiveness = 1.0
 randomness = 0.28
 emission_shape = 1
@@ -266,34 +292,54 @@ angle_min = -180.0
 angle_max = 180.0
 scale_amount_min = 0.0
 scale_amount_max = 14.31
+color = Color(1, 1, 1, 0.878431)
 color_ramp = SubResource("Gradient_4evyo")
 color_initial_ramp = SubResource("Gradient_0ghmq")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 
-[node name="damage" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 32
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+z_index = -5
+z_as_relative = false
+emitting = false
+amount = 230
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.28
+emission_shape = 1
+emission_sphere_radius = 32.68
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 36.36
+initial_velocity_max = 246.5
+damping_min = 370.835
+damping_max = 370.835
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.0
+scale_amount_max = 14.31
+color = Color(1, 1, 1, 0.878431)
+color_ramp = SubResource("Gradient_4evyo")
+color_initial_ramp = SubResource("Gradient_0ghmq")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
-shape = SubResource("CircleShape2D_xt000")
+[node name="DamageStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ppl5q")
+volume_db = 16.0
+max_distance = 5000.0
+max_polyphony = 10
+panning_strength = 2.0
+bus = &"SFX"
 
-[node name="recieve" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 16
+[node name="DeathStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kbtbo")
+volume_db = 16.0
+max_distance = 5000.0
+max_polyphony = 10
+panning_strength = 2.0
+bus = &"SFX"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="recieve"]
-shape = SubResource("CircleShape2D_xt000")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.999998, 1)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_7uu58")
-animation = &"Enemy1WalkDown"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.685, 0.685)
-shape = SubResource("CircleShape2D_xt000")
-
-[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
-[connection signal="area_entered" from="recieve" to="." method="_on_recieve_area_entered"]
+[connection signal="area_entered" from="Damage" to="." method="_on_damage_area_entered"]
+[connection signal="area_entered" from="Recieve" to="." method="_on_recieve_area_entered"]

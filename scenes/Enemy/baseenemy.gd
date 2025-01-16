@@ -11,6 +11,7 @@ var animation_to_play = "Enemy1"
 var face_direction = ""
 var type = Globaldata.type
 
+
 func _process(_delta):
 	var playerpos = Globaldata.playerpositon
 	
@@ -41,26 +42,36 @@ func _process(_delta):
 	type = Globaldata.type
 
 
-func Damaged():
+func get_damage():
 	print(hp)
+	
+	$DamageStream.play()
+	$DamageParticles.emitting = true
+	
 	match type:
 		"Fire": hp -= 15
-		"Water": hp -=  5
-		"Wind": hp -=  5
+		"Water": hp -= 5
+		"Wind": hp -= 5
 		"Earth": hp -= 5
+		
 	if hp <= 0: 
-		Globaldata.enemydied()
-		Globaldata.emit_signal("enemydie")
-		
-		$AnimatedSprite2D.visible = false
-		$recieve.queue_free()
-		$damage.queue_free()
-		$CollisionShape2D.queue_free()
-		$DeathParticles.emitting = true
-		
-		await get_tree().create_timer(5.0).timeout
-		queue_free()
-		
+		die()
+
+
+func die():
+	Globaldata.enemydied()
+	Globaldata.emit_signal("enemydie")
+	
+	$DeathStream.play()
+	$DeathParticles.emitting = true
+	$AnimatedSprite2D.visible = false
+	$Recieve.queue_free()
+	$Damage.queue_free()
+	$CollisionShape2D.queue_free()
+
+	
+	await get_tree().create_timer(5.0).timeout
+	queue_free()
 
 
 func _on_damage_area_entered(area):
@@ -68,6 +79,7 @@ func _on_damage_area_entered(area):
 	pass
 
 
+
 func _on_recieve_area_entered(area):
-	Damaged()
+	get_damage()
 	print("recieved 1")
