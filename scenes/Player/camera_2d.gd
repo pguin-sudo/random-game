@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var timer = $shakingtime
+@onready var timer = $ShakingCooldown
 @export var shake = 10
 
 

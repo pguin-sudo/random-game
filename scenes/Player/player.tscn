@@ -10,7 +10,8 @@
 [ext_resource type="Script" path="res://scenes/Player/camera_2d.gd" id="7_w23jo"]
 
 [sub_resource type="Gradient" id="Gradient_sqppr"]
-colors = PackedColorArray(0.5, 2, 0.5, 1, 2, 5, 2, 1)
+offsets = PackedFloat32Array(0.0070922, 1)
+colors = PackedColorArray(0.5, 2, 0.5, 1, 1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3anyv"]
 height = 150.0
@@ -288,11 +289,9 @@ anim_offset_max = 1.0
 [node name="MeleeAttack" type="Area2D" parent="PointNode/Point"]
 
 [node name="Hand" type="CollisionShape2D" parent="PointNode/Point/MeleeAttack"]
-visible = false
 shape = SubResource("CapsuleShape2D_3anyv")
 
 [node name="Melee" type="CollisionShape2D" parent="PointNode/Point/MeleeAttack"]
-visible = false
 shape = SubResource("CapsuleShape2D_5xvu1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -318,6 +317,6 @@ process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("7_w23jo")
 
-[node name="shakingtime" type="Timer" parent="Camera2D"]
+[node name="ShakingCooldown" type="Timer" parent="Camera2D"]
 wait_time = 0.1
 one_shot = true

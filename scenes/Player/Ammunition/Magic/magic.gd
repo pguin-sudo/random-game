@@ -3,9 +3,6 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 var type = "Fire"
 var pos
-var rota 
-var dir
-@export var speed = 2000
 
 
 func _ready():
@@ -14,14 +11,8 @@ func _ready():
 		"Water": pass # sprite.set_texture()
 		"Wind": pass # sprite.set_texture()
 		"Earth": pass # sprite.set_texture()
+	$CPUParticles2D.emitting = true
 	global_position=pos
-	global_rotation=rota
-
-
-func _physics_process(_delta):
-	velocity = Vector2(speed, 0).rotated(dir)
-	move_and_slide()
-
-
-func _on_area_2d_area_entered(area):
+	await get_tree().create_timer(0.3).timeout
 	queue_free()
+	

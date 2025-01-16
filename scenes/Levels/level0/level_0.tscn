@@ -10,9 +10,6 @@ glow_enabled = true
 
 [node name="Level0" type="Node2D"]
 
-[node name="baseenemy" parent="." instance=ExtResource("1_yf27a")]
-position = Vector2(620, 407)
-
 [node name="Player" parent="." instance=ExtResource("2_oe1lf")]
 position = Vector2(113, 263)
 

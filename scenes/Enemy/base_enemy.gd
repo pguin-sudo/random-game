@@ -68,7 +68,6 @@ func die():
 	$Recieve.queue_free()
 	$Damage.queue_free()
 	$CollisionShape2D.queue_free()
-
 	
 	await get_tree().create_timer(5.0).timeout
 	queue_free()

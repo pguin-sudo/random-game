@@ -1,10 +1,20 @@
 extends CharacterBody2D
 
+enum Style {
+	HAND, 
+	MELEE, 
+	RANGE,
+	MAGIC, 
+	DEMONIC,
+}
+
 var face_direction = "Down"
 var animation_to_play = "Wind"
 var current_type = "Wind"
+var current_style = Style.MAGIC
 
 var bullet_path = preload("res://scenes/Player/Ammunition/Bullet/bullet.tscn")
+var magic_path = preload("res://scenes/Player/Ammunition/Magic/magic.tscn")
 
 @export var speed = 500
 
@@ -39,8 +49,12 @@ func _physics_process(_delta):
 	send_data()
 	$PointNode.look_at(get_global_mouse_position())
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
-		$PointNode/Point/Particles.emitting = true
-		if $ShootCooldown.is_stopped(): shoot()
+		if $ShootCooldown.is_stopped(): 
+			if current_style == Style.RANGE:
+				$PointNode/Point/Particles.emitting = true
+				shoot()
+			elif current_style == Style.MAGIC:
+				cast_magic()
 		return
 		
 	$PointNode/Point/Particles.emitting = false
@@ -49,6 +63,13 @@ func _physics_process(_delta):
 func send_data():
 	Globaldata.playerpositon = global_position
 	Globaldata.type = current_type
+
+
+func cast_magic():
+	var magic = magic_path.instantiate()
+	magic.pos = get_global_mouse_position()
+	get_parent().add_child(magic)
+	$ShootCooldown.start()
 
 
 func shoot():
