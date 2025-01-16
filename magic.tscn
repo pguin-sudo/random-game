@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://chq5e2k4ula80"]
+
+[ext_resource type="Texture2D" uid="uid://dpekdos51luc4" path="res://resources/Graph/Characters/Other/Fireball.png" id="1_4prpp"]
+
+[sub_resource type="GDScript" id="GDScript_dv8it"]
+script/source = "extends CharacterBody2D
+
+@onready var sprite = $Sprite
+var type = \"Fire\"
+var pos
+var rota 
+var dir
+@export var speed = 2000
+
+
+func _ready():
+	match type:
+		\"Fire\": pass # sprite.set_texture()
+		\"Water\": pass # sprite.set_texture()
+		\"Air\": pass # sprite.set_texture()
+		\"Earth\": pass # sprite.set_texture()
+	global_position=pos
+	global_rotation=rota
+
+
+func _physics_process(_delta):
+	velocity = Vector2(speed, 0).rotated(dir)
+	move_and_slide()
+
+
+func _on_area_2d_area_entered(area):
+	queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27fwp"]
+radius = 30.0167
+
+[node name="Magic" type="CharacterBody2D"]
+script = SubResource("GDScript_dv8it")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 5, 2, 1)
+scale = Vector2(12.75, 12.75)
+texture = ExtResource("1_4prpp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_27fwp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

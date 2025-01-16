@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-
 var face_direction = "Down"
 var animation_to_play = "Wind"
-var currenttype = "Wind"
-var bulletpath = preload("res://scenes/Player/Bullet/Bullet.tscn")
+var current_type = "Wind"
+
+var bullet_path = preload("res://scenes/Player/Ammunition/Bullet/bullet.tscn")
 
 @export var speed = 500
 
@@ -15,7 +15,7 @@ func _ready():
 	randomize()
 	anim.stop()
 	anim.play(animation_to_play)
-	Globaldata.enemydie.connect(killedenemy)
+	Globaldata.enemydie.connect(increase_score)
 
 func _physics_process(_delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -31,9 +31,9 @@ func _physics_process(_delta):
 	
 	if velocity.length() <= 0.0: 
 		#for idle anim using currenttype
-		anim.play(currenttype)
+		anim.play(current_type)
 	else:
-		animation_to_play = currenttype + "Walk" + face_direction
+		animation_to_play = current_type + "Walk" + face_direction
 		anim.play(animation_to_play)
 	
 	send_data()
@@ -48,11 +48,11 @@ func _physics_process(_delta):
 
 func send_data():
 	Globaldata.playerpositon = global_position
-	Globaldata.type = currenttype
+	Globaldata.type = current_type
 
 
 func shoot():
-	var bullet = bulletpath.instantiate()
+	var bullet = bullet_path.instantiate()
 	bullet.dir = $PointNode.rotation
 	bullet.pos = $PointNode/Point.global_position
 	bullet.rota = $PointNode.global_rotation
@@ -61,6 +61,6 @@ func shoot():
 	# print("done")
 	
 
-func killedenemy():
+func increase_score():
 	cam.timer.start()
 	$Canvas/Score.text = str(Globaldata.score)
