@@ -9,7 +9,7 @@ extends CharacterBody2D
 var animation_to_play = "Enemy1" 
 
 var face_direction = ""
-var type = "Fire"
+var type = Globaldata.type
 
 func _process(_delta):
 	var playerpos = Globaldata.playerpositon
@@ -36,14 +36,17 @@ func _process(_delta):
 				
 		else: velocity = Vector2.ZERO
 	move_and_slide() 
-
+	
+	#make a signal so when player changes type, var "type" will change, without next line of code
+	type = Globaldata.type
 
 
 func Damaged():
+	print(hp)
 	match type:
 		"Fire": hp -= 15
 		"Water": hp -=  5
-		"Air": hp -=  5
+		"Wind": hp -=  5
 		"Earth": hp -= 5
 	if hp <= 0: 
 		Globaldata.enemydied()
@@ -57,6 +60,7 @@ func Damaged():
 		
 		await get_tree().create_timer(5.0).timeout
 		queue_free()
+		
 
 
 func _on_damage_area_entered(area):

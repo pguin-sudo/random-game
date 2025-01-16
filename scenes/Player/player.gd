@@ -42,6 +42,7 @@ func _physics_process(_delta):
 		$PointNode/Point/Particles.emitting = true
 		if $ShootCooldown.is_stopped(): shoot()
 		return
+		
 	$PointNode/Point/Particles.emitting = false
 
 
