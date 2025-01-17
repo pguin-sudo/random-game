@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkusj757cc0ur"]
+[gd_scene load_steps=4 format=3 uid="uid://bkusj757cc0ur"]
 
 [ext_resource type="Script" path="res://scenes/Player/Ammunition/Magic/magic.gd" id="1_60wn0"]
 
@@ -8,10 +8,7 @@ radius = 30.0167
 [sub_resource type="Gradient" id="Gradient_i3s1l"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.933333, 0, 0)
 
-[sub_resource type="Gradient" id="Gradient_u6sg1"]
-colors = PackedColorArray(0.5, 2, 0.5, 1, 1, 1, 1, 1)
-
-[node name="Magic" type="CharacterBody2D"]
+[node name="Magic" type="Node2D"]
 script = ExtResource("1_60wn0")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -38,6 +35,3 @@ scale_amount_min = 8.0
 scale_amount_max = 8.0
 color = Color(0.0500001, 1, 0, 0.32549)
 color_ramp = SubResource("Gradient_i3s1l")
-color_initial_ramp = SubResource("Gradient_u6sg1")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

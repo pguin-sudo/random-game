@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_27fwp"]
 radius = 30.0167
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="RigidBody2D"]
 script = ExtResource("1_1vlmu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -20,5 +20,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_27fwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_27fwp")
+disabled = true
+one_way_collision = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

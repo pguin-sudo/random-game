@@ -11,7 +11,7 @@ enum Style {
 var face_direction = "Down"
 var animation_to_play = "Wind"
 var current_type = "Wind"
-var current_style = Style.MAGIC
+var current_style = Style.RANGE
 
 var bullet_path = preload("res://scenes/Player/Ammunition/Bullet/bullet.tscn")
 var magic_path = preload("res://scenes/Player/Ammunition/Magic/magic.tscn")

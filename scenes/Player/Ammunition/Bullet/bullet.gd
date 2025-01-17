@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 @onready var sprite = $Sprite
 var type = "Fire"
@@ -19,8 +19,8 @@ func _ready():
 
 
 func _physics_process(_delta):
-	velocity = Vector2(speed, 0).rotated(dir)
-	move_and_slide()
+	linear_velocity = Vector2(speed, 0).rotated(dir)
+	# move_and_slide()
 
 
 func _on_area_2d_area_entered(area):
