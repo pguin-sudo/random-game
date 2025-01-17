@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvfx2hh2lcnhd"]
+
+[ext_resource type="Theme" uid="uid://diohw80dimm6u" path="res://resources/UI/LackBase.tres" id="1_i5tsd"]
+[ext_resource type="Script" path="res://scenes/UI/Options/options.gd" id="2_rss4k"]
+
+[node name="Options" type="Panel"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i5tsd")
+script = ExtResource("2_rss4k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme = ExtResource("1_i5tsd")
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = 293.0
+offset_right = 225.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i5tsd")
+
+[node name="Sounds" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i5tsd")
+text = "Sounds"
+
+[node name="Music" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i5tsd")
+button_pressed = true
+text = "Music"
+
+[node name="SFX" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i5tsd")
+button_pressed = true
+text = "SFX
+"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i5tsd")
+text = "Exit"
+
+[connection signal="toggled" from="VBoxContainer/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="VBoxContainer/SFX" to="." method="_on_sfx_toggled"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

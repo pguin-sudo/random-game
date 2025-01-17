@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://p3tkfrjpapm8"
-path="res://.godot/imported/Lack-Regular.otf-4dd35c579aae0180dc3124b53f02768e.fontdata"
+path="res://.godot/imported/Lack-Regular.otf-d53bf9aed7936ac9be60eb07a6966359.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/FontsFiles/Lack-Regular.otf"
-dest_files=["res://.godot/imported/Lack-Regular.otf-4dd35c579aae0180dc3124b53f02768e.fontdata"]
+source_file="res://resources/UI/Fonts/FontsFiles/Lack-Regular.otf"
+dest_files=["res://.godot/imported/Lack-Regular.otf-d53bf9aed7936ac9be60eb07a6966359.fontdata"]
 
 [params]
 

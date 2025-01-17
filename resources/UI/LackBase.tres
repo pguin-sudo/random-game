@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://diohw80dimm6u"]
+
+[ext_resource type="FontFile" uid="uid://p3tkfrjpapm8" path="res://resources/UI/Fonts/FontsFiles/Lack-Regular.otf" id="1_2rjig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vm0d"]
+bg_color = Color(0.15, 0.15, 0.15, 0.780392)
+shadow_size = 1585
+shadow_offset = Vector2(15, 15)
+
+[resource]
+default_font = ExtResource("1_2rjig")
+default_font_size = 24
+Panel/styles/panel = SubResource("StyleBoxFlat_2vm0d")

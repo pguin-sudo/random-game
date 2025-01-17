@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf0qeu5c018xn"]
+
+[ext_resource type="Script" path="res://scenes/UI/Menu/main_menu.gd" id="1_7avnm"]
+[ext_resource type="Theme" uid="uid://diohw80dimm6u" path="res://resources/UI/LackBase.tres" id="2_hidxi"]
+[ext_resource type="PackedScene" uid="uid://dvfx2hh2lcnhd" path="res://scenes/UI/Options/options.tscn" id="3_cxtoa"]
+[ext_resource type="AudioStream" uid="uid://xightji463h4" path="res://resources/Audio/Music/1.mp3" id="4_yi7af"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7avnm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hidxi")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme = ExtResource("2_hidxi")
+text = "RANDOM GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = 293.0
+offset_right = 225.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hidxi")
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hidxi")
+text = "START"
+
+[node name="Options" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hidxi")
+text = "OPTIONS"
+
+[node name="Options" parent="." instance=ExtResource("3_cxtoa")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yi7af")
+volume_db = -25.0
+pitch_scale = 0.75
+autoplay = true
+bus = &"Music"
+playback_type = 1
+parameters/looping = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Options" to="Options" method="_on_open_pressed"]
