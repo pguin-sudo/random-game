@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://gydm0254wq83"]
+
+[ext_resource type="Script" path="res://scenes/Player/Ammunition/Melee/melee.gd" id="1_mvfvi"]
+[ext_resource type="Texture2D" uid="uid://b2a3roph861fp" path="res://resources/Graph/GUI/bg.png" id="2_ji02y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ut0wu"]
+radius = 16.0
+height = 74.0
+
+[node name="Melee" type="Node2D"]
+script = ExtResource("1_mvfvi")
+
+[node name="Bg" type="Sprite2D" parent="."]
+scale = Vector2(0.015625, 0.0768519)
+texture = ExtResource("2_ji02y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ut0wu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

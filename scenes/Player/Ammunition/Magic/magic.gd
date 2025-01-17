@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite = $Sprite
+#@onready var sprite = $Sprite
 var type = "Fire"
 var pos
 
