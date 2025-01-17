@@ -1,12 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://ok1b26if5hmj"]
+[gd_scene load_steps=43 format=3 uid="uid://ok1b26if5hmj"]
 
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_8i60p"]
 [ext_resource type="Texture2D" uid="uid://ffqcw00ti6gq" path="res://resources/Graph/Characters/Player/Wind/D_Walk.png" id="2_3yjo2"]
+[ext_resource type="PackedScene" uid="uid://yst12k2xebmk" path="res://scenes/UI/Pause/pause.tscn" id="2_5tjvj"]
 [ext_resource type="Texture2D" uid="uid://cdconarmjdj1o" path="res://resources/Graph/Characters/Player/Wind/U_Idle.png" id="2_mqxvb"]
 [ext_resource type="Texture2D" uid="uid://ceneremvqd8nh" path="res://resources/Graph/Characters/Player/Wind/S_Walk.png" id="3_m5ycy"]
 [ext_resource type="Texture2D" uid="uid://bf7fmus5onghm" path="res://resources/Graph/Characters/Player/Wind/U_Walk.png" id="4_delvo"]
 [ext_resource type="Texture2D" uid="uid://b7gtwaic3lby7" path="res://resources/Graph/Characters/Player/Wind/S_Walk_Inv.png" id="5_r2dn0"]
-[ext_resource type="Theme" uid="uid://diohw80dimm6u" path="res://resources/Fonts/GodotFont/LackBase.tres" id="7_fx8y6"]
+[ext_resource type="Theme" uid="uid://diohw80dimm6u" path="res://resources/UI/LackBase.tres" id="7_fx8y6"]
 [ext_resource type="Script" path="res://scenes/Player/camera_2d.gd" id="7_w23jo"]
 
 [sub_resource type="Gradient" id="Gradient_sqppr"]
@@ -262,6 +263,9 @@ size_flags_vertical = 0
 theme = ExtResource("7_fx8y6")
 text = "SCORE"
 metadata/_edit_use_anchors_ = true
+
+[node name="Pause" parent="Canvas" instance=ExtResource("2_5tjvj")]
+visible = false
 
 [node name="PointNode" type="Node2D" parent="."]
 
