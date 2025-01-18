@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ok1b26if5hmj"]
+[gd_scene load_steps=41 format=3 uid="uid://ok1b26if5hmj"]
 
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_8i60p"]
 [ext_resource type="Texture2D" uid="uid://ffqcw00ti6gq" path="res://resources/Graph/Characters/Player/Wind/D_Walk.png" id="2_3yjo2"]
@@ -297,6 +297,7 @@ shape = SubResource("CircleShape2D_x46tx")
 shape = SubResource("CircleShape2D_x46tx")
 
 [node name="MeleeCooldown" type="Timer" parent="."]
+wait_time = 0.35
 one_shot = true
 autostart = true
 

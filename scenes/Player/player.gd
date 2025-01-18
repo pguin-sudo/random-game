@@ -11,8 +11,9 @@ var animation_to_play = "Wind"
 var current_type = "Wind"
 var current_style = Style.RANGE
 
-var bullet_path = preload("res://scenes/Player/Ammunition/Bullet/bullet.tscn")
+var melee_path = preload("res://scenes/Player/Ammunition/Melee/melee.tscn")
 var magic_path = preload("res://scenes/Player/Ammunition/Magic/magic.tscn")
+var bullet_path = preload("res://scenes/Player/Ammunition/Bullet/bullet.tscn")
 
 @export var speed = 500
 @export var dash_speed = 15 * (10**3)
@@ -99,6 +100,11 @@ func attack_magic():
 func attack_melee():
 	var dash_vector = global_position.direction_to($PointNode/Point.global_position)
 	velocity = dash_vector * dash_speed
+	
+	
+	var melee = melee_path.instantiate()
+	melee.rota = $PointNode.global_rotation
+	$PointNode/Point.add_child(melee)
 	$MeleeCooldown.start()
 
 

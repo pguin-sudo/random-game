@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://gydm0254wq83"]
+[gd_scene load_steps=5 format=3 uid="uid://gydm0254wq83"]
 
 [ext_resource type="Script" path="res://scenes/Player/Ammunition/Melee/melee.gd" id="1_mvfvi"]
-[ext_resource type="Texture2D" uid="uid://b2a3roph861fp" path="res://resources/Graph/GUI/bg.png" id="2_ji02y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ut0wu"]
 radius = 16.0
@@ -19,11 +18,9 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.784314)
 [node name="Melee" type="Node2D"]
 script = ExtResource("1_mvfvi")
 
-[node name="Bg" type="Sprite2D" parent="."]
-scale = Vector2(0.015625, 0.0768519)
-texture = ExtResource("2_ji02y")
-
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_ut0wu")
@@ -34,6 +31,7 @@ amount = 16
 lifetime = 0.1
 one_shot = true
 randomness = 1.0
+local_coords = true
 emission_shape = 1
 emission_sphere_radius = 6.08
 direction = Vector2(0, 0)

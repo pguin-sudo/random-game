@@ -2,10 +2,13 @@ extends Node
 
 #layer: 
 #1 player recieve damage
-#2 bullet recieve damage
-#5 enemy recieve damage
+#2 bullet and melee and magic recieve damage
+#3 enemy recieve melee damage
+#4 enemy recieve magic damage
+#5 enemy recieve range damage
+#
 #6 enemy damage
- 
+
 
 signal enemydie
 var playerpositon

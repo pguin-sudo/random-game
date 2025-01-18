@@ -42,17 +42,16 @@ func _process(_delta):
 	type = Globaldata.type
 
 
-func get_damage():
+func get_damage(recieved_type):
 	print(hp)
 	
 	$DamageStream.play()
 	$DamageParticles.emitting = true
 	
-	match type:
-		"Fire": hp -= 15
-		"Water": hp -= 5
-		"Wind": hp -= 5
-		"Earth": hp -= 5
+	match recieved_type:
+		"Melee": hp -= 15 #die()
+		"Magic": hp -= 2
+		"Range": hp -= 1
 		
 	if hp <= 0: 
 		die()
@@ -65,7 +64,7 @@ func die():
 	$DeathStream.play()
 	$DeathParticles.emitting = true
 	$AnimatedSprite2D.visible = false
-	$Recieve.queue_free()
+	$RecieveGroup.queue_free()
 	$Damage.queue_free()
 	$CollisionShape2D.queue_free()
 	
@@ -74,11 +73,18 @@ func die():
 
 
 func _on_damage_area_entered(area):
-	print("recieved 0")
+	#to damage player
 	pass
 
 
 
-func _on_recieve_area_entered(area):
-	get_damage()
-	print("recieved 1")
+func _on_recieve_melee_area_entered(area):
+	get_damage("Melee")
+
+
+func _on_recieve_magic_area_entered(area):
+	get_damage("Magic")
+
+
+func _on_recieve_range_area_entered(area):
+	get_damage("Range")

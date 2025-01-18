@@ -255,11 +255,27 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
 shape = SubResource("CircleShape2D_xt000")
 
-[node name="Recieve" type="Area2D" parent="."]
+[node name="RecieveGroup" type="Node2D" parent="."]
+
+[node name="Recieve_melee" type="Area2D" parent="RecieveGroup"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecieveGroup/Recieve_melee"]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="Recieve_magic" type="Area2D" parent="RecieveGroup"]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecieveGroup/Recieve_magic"]
+shape = SubResource("CircleShape2D_xt000")
+
+[node name="Recieve_range" type="Area2D" parent="RecieveGroup"]
 collision_layer = 2
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Recieve"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecieveGroup/Recieve_range"]
 shape = SubResource("CircleShape2D_xt000")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -342,4 +358,6 @@ panning_strength = 2.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Damage" to="." method="_on_damage_area_entered"]
-[connection signal="area_entered" from="Recieve" to="." method="_on_recieve_area_entered"]
+[connection signal="area_entered" from="RecieveGroup/Recieve_melee" to="." method="_on_recieve_melee_area_entered"]
+[connection signal="area_entered" from="RecieveGroup/Recieve_magic" to="." method="_on_recieve_magic_area_entered"]
+[connection signal="area_entered" from="RecieveGroup/Recieve_range" to="." method="_on_recieve_range_area_entered"]
