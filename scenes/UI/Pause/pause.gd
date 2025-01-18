@@ -1,6 +1,11 @@
 extends Control
 
+
 var is_paused = false 
+
+
+func _ready():
+	toggle_pause(false)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -14,7 +19,8 @@ func toggle_pause(toggled) -> void:
 	visible = is_paused
 	get_tree().paused = is_paused;
 	$Options.visible = false
-	$AudioStreamPlayer.playing = is_paused
+	AudioServer.set_bus_effect_enabled(1, 0, is_paused)
+	AudioServer.set_bus_effect_enabled(1, 1, is_paused)
 
 
 func go_to_main_menu() -> void:
