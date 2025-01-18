@@ -46,4 +46,10 @@ scale_curve_y = SubResource("Curve_k6jgv")
 color = Color(0.846337, 0.933586, 0.932682, 1)
 color_ramp = SubResource("Gradient_gov50")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

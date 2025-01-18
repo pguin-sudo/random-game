@@ -13,6 +13,8 @@ func _ready():
 		"Earth": pass # sprite.set_texture()
 	$CPUParticles2D.emitting = true
 	global_position=pos
-	await get_tree().create_timer(0.3).timeout
-	queue_free()
 	
+
+
+func _on_timer_timeout():
+	queue_free()

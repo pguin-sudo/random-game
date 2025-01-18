@@ -68,8 +68,7 @@ func die():
 	$Damage.queue_free()
 	$CollisionShape2D.queue_free()
 	
-	await get_tree().create_timer(5.0).timeout
-	queue_free()
+	$DieTimer.start()
 
 
 func _on_damage_area_entered(area):
@@ -88,3 +87,7 @@ func _on_recieve_magic_area_entered(area):
 
 func _on_recieve_range_area_entered(area):
 	get_damage("Range")
+
+
+func _on_die_timer_timeout():
+	queue_free()

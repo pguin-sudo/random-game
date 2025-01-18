@@ -357,7 +357,12 @@ max_polyphony = 10
 panning_strength = 2.0
 bus = &"SFX"
 
+[node name="DieTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="Damage" to="." method="_on_damage_area_entered"]
 [connection signal="area_entered" from="RecieveGroup/Recieve_melee" to="." method="_on_recieve_melee_area_entered"]
 [connection signal="area_entered" from="RecieveGroup/Recieve_magic" to="." method="_on_recieve_magic_area_entered"]
 [connection signal="area_entered" from="RecieveGroup/Recieve_range" to="." method="_on_recieve_range_area_entered"]
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]
